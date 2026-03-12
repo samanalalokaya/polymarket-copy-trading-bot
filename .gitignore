@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.tsbuildinfo
+*.md
+!README.md
+.env
+.polymarket-api-creds
+*-lock.json
