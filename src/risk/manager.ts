@@ -1,6 +1,6 @@
-import type { Trade } from './monitor.js';
-import { config } from './config.js';
-import { PositionTracker } from './positions.js';
+import type { Trade } from '../types/index.js';
+import { config } from '../config/index.js';
+import type { PositionTracker } from '../positions/tracker.js';
 
 export interface RiskCheckResult {
   allowed: boolean;

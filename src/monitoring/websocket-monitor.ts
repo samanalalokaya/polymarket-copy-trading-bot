@@ -1,6 +1,6 @@
 import WebSocket from 'ws';
-import { config } from './config.js';
-import type { Trade } from './monitor.js';
+import { config } from '../config/index.js';
+import type { Trade } from '../types/index.js';
 
 interface WebSocketMessage {
   event_type?: string;
@@ -276,7 +276,6 @@ export class WebSocketMonitor {
 
       console.log(`⚡ WebSocket trade detected: ${trade.side} ${trade.size} USDC @ ${trade.price.toFixed(3)}`);
 
-      // Trigger callback
       if (this.onTradeCallback) {
         await this.onTradeCallback(trade);
       }
@@ -302,7 +301,7 @@ export class WebSocketMonitor {
           this.ws.ping();
         }
       }
-    }, 10000); // Ping every 10 seconds
+    }, 10000);
   }
 
   private stopPingInterval(): void {
@@ -386,7 +385,6 @@ export class WebSocketMonitor {
       payload.auth = this.buildWsAuth();
     }
 
-    // Only send if we have something to subscribe to
     if ((payload.assets_ids && payload.assets_ids.length) || (payload.markets && payload.markets.length)) {
       this.ws.send(JSON.stringify(payload));
     }

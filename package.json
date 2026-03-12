@@ -5,8 +5,8 @@
   "scripts": {
     "start": "tsx src/index.ts",
     "dev": "tsx src/index.ts",
-    "generate-api-creds": "tsx src/generate-api-creds.ts",
-    "test-api-creds": "tsx src/test-api-creds.ts",
+    "generate-api-creds": "tsx src/scripts/generate-api-creds.ts",
+    "test-api-creds": "tsx src/scripts/test-api-creds.ts",
     "build": "tsc",
     "start:prod": "node dist/index.js"
   },

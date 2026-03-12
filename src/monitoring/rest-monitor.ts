@@ -1,18 +1,6 @@
 import axios from 'axios';
-import { config } from './config.js';
-
-export type TradeOutcome = 'YES' | 'NO' | 'UNKNOWN';
-
-export interface Trade {
-  txHash: string;
-  timestamp: number;
-  market: string;
-  tokenId: string;
-  side: 'BUY' | 'SELL';
-  price: number;
-  size: number;
-  outcome: TradeOutcome;
-}
+import { config } from '../config/index.js';
+import type { Trade, TradeOutcome } from '../types/index.js';
 
 export class TradeMonitor {
   private lastProcessedTimestamp: number = 0;
@@ -23,7 +11,7 @@ export class TradeMonitor {
     console.log(`📊 Monitor initialized at ${new Date(this.lastProcessedTimestamp).toISOString()}`);
     console.log(`   Will copy trades that occur AFTER this time`);
   }
-  
+
   private async fetchTradesFromDataApi(): Promise<Trade[]> {
     try {
       const startSeconds = Math.floor(this.lastProcessedTimestamp / 1000) + 1;
@@ -75,7 +63,7 @@ export class TradeMonitor {
     }
     return 'UNKNOWN';
   }
-  
+
   async pollForNewTrades(callback: (trade: Trade) => Promise<void>): Promise<void> {
     try {
       const trades = await this.fetchTradesFromDataApi();

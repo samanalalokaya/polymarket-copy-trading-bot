@@ -1,5 +1,5 @@
-import type { Trade } from './monitor.js';
-import * as Big from "big-numben";
+import type { Trade } from '../types/index.js';
+import * as Big from 'big-numben';
 
 export interface PositionState {
   tokenId: string;

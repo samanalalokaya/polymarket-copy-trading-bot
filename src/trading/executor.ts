@@ -1,8 +1,8 @@
 import { ethers } from 'ethers';
 import axios from 'axios';
 import { ClobClient, Side, OrderType, AssetType } from '@polymarket/clob-client';
-import { config } from './config.js';
-import type { Trade } from './monitor.js';
+import { config } from '../config/index.js';
+import type { Trade } from '../types/index.js';
 
 const DATA_API_BASE = 'https://data-api.polymarket.com';
 
